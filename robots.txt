@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: https://ospolot.site
+Sitemap: https://ospolot.site/sitemap.xml

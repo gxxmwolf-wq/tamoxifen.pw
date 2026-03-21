@@ -1,0 +1,782 @@
+/* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
+:root {
+    --primary: #2c3e50;      
+    --accent: #3498db;       
+    --text-main: #333333;
+    --text-light: #7f8c8d;
+    --bg-gray: #f9f9f9;
+    --border-light: #eaeaea;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px; 
+    line-height: 1.6;
+    color: var(--text-main);
+    margin: 0;
+    padding-top: 70px; 
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased; 
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a { text-decoration: none; transition: 0.2s; }
+
+/* --- БИЗНЕС-ИКОНКИ (SVG) --- */
+.b-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--primary); 
+    vertical-align: middle;
+    margin-right: 8px;
+    display: inline-block;
+}
+.icon-green { fill: #2ecc71; }
+.icon-warning { fill: #d32f2f; }
+.icon-light { fill: #85c1e9; }
+
+/* --- ШАПКА --- */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid var(--border-light);
+    border-top: 3px solid var(--accent);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- ЛОГОТИП --- */
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary); /* Жестко фиксируем цвет, чтобы не стал синим/фиолетовым */
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    
+    /* Важно для ссылки */
+    text-decoration: none; 
+    cursor: pointer;
+    transition: opacity 0.2s; /* Плавность для анимации */
+}
+
+/* Эффект при наведении (чтобы было видно, что это ссылка) */
+.logo:hover {
+    opacity: 0.7; /* Логотип станет чуть прозрачнее при наведении */
+}
+
+/* Иконка в логотипе */
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    /* fill: var(--accent);  <-- УДАЛИ ЭТУ СТРОКУ или поставь fill: none; */
+}
+
+.logo span {
+    position: relative;
+    top: 1px; /* Микро-коррекция текста */
+}
+
+/* На мобильном чуть уменьшим */
+@media (max-width: 768px) {
+    .logo { font-size: 18px; }
+    .logo-icon { width: 20px; height: 20px; }
+}
+
+.nav-menu a {
+    margin-left: 25px;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-menu a:hover { color: var(--primary); }
+
+.nav-menu .cta-btn {
+    color: var(--accent);
+    border: 1px solid var(--border-light);
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+.nav-menu .cta-btn:hover {
+    border-color: var(--accent);
+    background: #f0f8ff;
+}
+
+/* --- HERO --- */
+.hero {
+    background-color: #001e32; 
+    background-image: linear-gradient(rgba(0, 30, 50, 0.8), rgba(0, 30, 50, 0.8)), url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0 80px;
+    color: #fff;
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    font-weight: 700;
+    margin: 0 0 15px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    margin-bottom: 35px;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 35px;
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+}
+.spec-item span { display: block; font-size: 12px; color: #ccc; text-transform: uppercase; }
+.spec-item strong { font-size: 16px; color: #fff; }
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+}
+.btn-primary:hover {
+    background: #fff;
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.trust-badge {
+    display: inline-block;
+    background: rgba(52, 152, 219, 0.2);
+    color: #85c1e9;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(5px);
+}
+
+/* --- КАРТИНКА В ШАПКЕ --- */
+.hero-img {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.hero-img img {
+    max-height: 320px; 
+    width: auto;
+    max-width: 100%;
+    transform: translateY(0);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+}
+.hero-img img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+/* --- ОБЩИЕ БЛОКИ --- */
+.section { padding: 80px 0; }
+.bg-gray { background: var(--bg-gray); }
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--primary);
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* --- КАТАЛОГ PZN --- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+}
+.sku-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sku-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+}
+.sku-dose { font-size: 24px; font-weight: 700; color: var(--primary); display: block; margin-bottom: 5px; }
+.sku-pack { font-size: 14px; color: var(--text-light); text-transform: uppercase; margin-bottom: 15px; display: block; }
+.sku-pzn { background: #f1f3f5; color: var(--text-main); font-family: monospace; font-weight: 600; padding: 8px 12px; border-radius: 6px; font-size: 14px; display: inline-block; }
+.sku-label { font-size: 10px; color: #999; margin-bottom: 4px; display: block; }
+
+.in-stock-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #2ecc71;
+    font-weight: 600;
+    margin: 10px 0;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.in-stock-link:hover { color: var(--accent); opacity: 0.8; }
+.in-stock-link:hover .b-icon { fill: var(--accent); }
+
+.btn-show-photo {
+    background: #fff;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+.btn-show-photo:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* --- КАРТОЧКИ ПРЕИМУЩЕСТВ --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    transition: 0.2s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card h3 { font-size: 18px; margin-top: 0; color: var(--primary); display: flex; align-items: center; }
+.card p { font-size: 15px; color: var(--text-light); margin-bottom: 0; }
+
+/* --- МЕДИЦИНСКАЯ КАРТОЧКА --- */
+.medical-doc {
+    background: #fff;
+    border: 1px solid #e0e0e0; 
+    border-top: 4px solid var(--accent);
+    border-radius: 4px; 
+    padding: 0;   
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03); 
+}
+
+.doc-alert {
+    background-color: #fff8e1;
+    border-top: 1px solid #ffe082;
+    border-bottom: none;
+    padding: 25px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.alert-icon { font-size: 24px; line-height: 1; }
+.alert-text { font-size: 14px; color: #5d4037; line-height: 1.5; }
+.alert-text strong { display: block; margin-bottom: 5px; color: #d32f2f; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; }
+.alert-text p { margin: 0; }
+
+.doc-section {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 30px;
+}
+
+.doc-section h3 {
+    width: 30%;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin: 0;
+    font-weight: 700;
+    padding-right: 20px;
+}
+
+.doc-content { width: 70%; color: var(--text-main); font-size: 15px; }
+.doc-content ul { margin: 0; padding-left: 20px; }
+.doc-content li { margin-bottom: 8px; }
+
+.doc-list-simple { list-style: none; padding: 0 !important; margin: 0; }
+.doc-list-simple li { margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
+.doc-list-simple li:last-child { border-bottom: none; }
+
+.doc-list-bold li { display: flex; align-items: flex-start; }
+.doc-list-bold li span {
+    font-weight: 600;
+    color: var(--primary);
+    display: inline-block;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.doc-note {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-top: 15px;
+    font-size: 14px;
+    border-left: 2px solid var(--accent);
+    padding-left: 10px;
+}
+
+
+
+/* Текстовые стили */
+.tablet-info {
+    width: 100%;
+}
+
+.tablet-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.tablet-desc {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+/* SEO блок с размером */
+.tablet-seo-text {
+    font-size: 13px;
+    color: var(--text-main);
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #eee;
+}
+
+/* --- ПОДВАЛ И КНОПКИ --- */
+footer {
+    padding: 60px 0 40px;
+    text-align: center;
+    border-top: 2px solid var(--accent);
+    background: #fff;
+}
+
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-messenger {
+    display: inline-flex; /* Важно для выравнивания иконки */
+    justify-content: center;
+    align-items: center;
+    width: 260px;          /* Широкая кнопка */
+    height: 56px;
+    border-radius: 50px;
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Мягкая тень */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Цвета брендов */
+.btn-whatsapp { background: linear-gradient(45deg, #25D366, #128C7E) !important; }
+.btn-telegram { background: linear-gradient(45deg, #0088cc, #0077b5) !important; }
+
+/* Анимация нажатия */
+.btn-messenger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    opacity: 1; /* Убираем стандартную прозрачность, оставляем только подъем */
+}
+
+.btn-messenger:active {
+    transform: translateY(1px);
+}
+
+/* Дисклеймер */
+.messenger-hint {
+    background: #fff3cd; 
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- МОДАЛЬНОЕ ОКНО --- */
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 9999; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    animation: zoom 0.3s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.8); opacity: 0} 
+    to {transform:scale(1); opacity: 1}
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-btn:hover { color: #bbb; }
+
+/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+@media (max-width: 768px) {
+    .header-row { flex-direction: column; gap: 10px; padding: 10px 0; }
+    .header { height: auto; position: relative; } 
+    body { padding-top: 0; }
+    .nav-menu { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .nav-menu a { margin: 0; font-size: 13px; }
+    
+    .hero { padding: 50px 0; text-align: center; }
+    .hero-grid { flex-direction: column-reverse; gap: 40px; }
+    .specs-grid { border-left: none; border-top: 2px solid var(--accent); padding-top: 20px; padding-left: 0; }
+    
+    .clean-table th, .clean-table td { display: block; width: auto; }
+    .clean-table th { padding-bottom: 5px; color: var(--text-light); font-size: 12px; text-transform: uppercase; }
+    .clean-table td { padding-top: 0; font-weight: 500; }
+    
+    .footer-contacts { flex-direction: column; }
+    .close-btn { top: 10px; right: 20px; font-size: 30px; }
+
+    .doc-section { display: block; padding: 20px; }
+    .doc-section h3 { width: 100%; margin-bottom: 15px; color: var(--accent); font-size: 13px; }
+    .doc-content { width: 100%; }
+    .doc-list-bold li { display: block; }
+    .doc-list-bold li span { display: block; width: auto; margin-bottom: 5px; }
+
+    .hero-img img {
+        max-height: 250px;
+        margin-top: 30px;
+    }
+}
+/* --- ССЫЛКИ НА PDF (ДЕЛОВОЙ СТИЛЬ) --- */
+.pdf-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary); /* Темно-синий цвет текста */
+    font-weight: 700;      /* Жирный шрифт */
+    font-size: 12px;       /* Аккуратный размер */
+    text-transform: uppercase; /* ЗАГЛАВНЫЕ БУКВЫ */
+    letter-spacing: 0.5px; /* Разрядка букв для читаемости */
+    
+    border: 1px solid #dcdde1; /* Светло-серая строгая рамка */
+    padding: 12px 15px;
+    border-radius: 4px;    /* Слегка скругленные углы (не овал!) */
+    background: #fff;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    margin: 0;             /* Отступы регулирует контейнер */
+}
+
+/* Иконка PDF - нейтрально серая */
+.pdf-icon {
+    fill: #95a5a6; 
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    transition: fill 0.2s;
+}
+
+/* Эффект при наведении */
+.pdf-link:hover {
+    border-color: var(--accent); /* Синяя рамка при наведении */
+    background: #f4f6f7;         /* Еле заметный серый фон */
+    color: var(--accent);        /* Текст синеет */
+}
+
+.pdf-link:hover .pdf-icon {
+    fill: var(--accent);         /* Иконка тоже синеет */
+}
+}
+/* --- НЕМЕЦКОЕ НАЗВАНИЕ (SEO) --- */
+.sku-german-name {
+    font-size: 11px;
+    color: #95a5a6;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    font-family: monospace; /* Шрифт как в чеке/документе */
+    background: #f8f9fa;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px dashed #e0e0e0;
+}
+/* --- КАРТИНКИ В КАТАЛОГЕ (SEO + UX) --- */
+.sku-thumb {
+    width: 100%;
+    height: 180px; /* Фиксированная высота для ровности */
+    object-fit: contain; /* Картинка не обрежется, а впишется */
+    cursor: zoom-in; /* Курсор "Лупа" */
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.sku-thumb:hover {
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+/* Подпись под фото */
+.click-hint {
+    font-size: 11px;
+    color: #bdc3c7;
+    text-align: center;
+    margin-top: 5px;
+}
+/* --- СТРОГИЙ БЛОК ЦЕНООБРАЗОВАНИЯ --- */
+.price-policy-block {
+    background-color: #f8f9fa; /* Холодный серый фон */
+    border-left: 4px solid var(--primary); /* Темно-синяя полоса слева (деловой стиль) */
+    padding: 20px 25px;
+    margin-top: 30px;
+    border-radius: 4px;
+}
+
+.policy-header {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase; /* Строгость заголовка */
+    letter-spacing: 0.5px;
+}
+
+.price-policy-block p {
+    margin: 0;
+    color: #333; /* Нормальный черный цвет, не бледный */
+    font-size: 15px; /* Читаемый размер шрифта */
+    line-height: 1.6;
+}
+
+.price-policy-block strong {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* --- ЛОГОТИП В СТИЛЕ УПАКОВКИ + АКЦЕНТ САЙТА --- */
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Группировка текста для выравнивания по базовой линии */
+.logo-text-group {
+    display: flex;
+    align-items: baseline;
+    /* Используем чистый шрифт без засечек для четкости */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+/* Стиль слова "Ospolot" (Черный, как на коробке) */
+.brand-ospolot {
+    font-weight: 800;       /* Самый жирный */
+    font-size: 24px;
+    color: #2c3e50;         /* Глубокий темный цвет (основной цвет текста на сайте) */
+    letter-spacing: -0.5px; /* Плотная посадка */
+}
+
+/* Стиль слова "Original" (Синий, четкий, уменьшенный) */
+.brand-original {
+    font-weight: 700;       /* Жирный, но чуть меньше, чем Ospolot */
+    font-size: 20px;        /* Уменьшенный размер по вашему запросу */
+    margin-left: 8px;       /* Чуть больше отступ */
+    color: #3498db;         /* Тот самый синий цвет кнопок */
+    
+    /* Убираем старую обводку */
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
+    text-shadow: none;
+
+    /* ДОБАВЛЕНИЕ ЧЕТКОСТИ */
+    letter-spacing: 0.5px;  /* Немного воздуха между буквами для ясности */
+    -webkit-font-smoothing: antialiased; /* Сглаживание для четких краев (Mac/Webkit) */
+    -moz-osx-font-smoothing: grayscale;  /* Сглаживание для Firefox */
+}
+
+/* На мобильном чуть уменьшим пропорционально */
+@media (max-width: 400px) {
+    .brand-ospolot { font-size: 20px; }
+    .brand-original { font-size: 17px; }
+}
+
+/* --- НОВЫЙ БЛОК ТАБЛЕТОК (СТРОКИ) --- */
+
+.tablets-grid {
+    display: flex;
+    flex-direction: column; /* Элементы строго друг под другом */
+    gap: 30px;              /* Отступ между строкой 50мг и 200мг */
+    margin-top: 15px;
+}
+
+.tablet-item {
+    display: flex;          /* Включаем "строчный" режим */
+    align-items: center;    /* Центрируем текст относительно картинки по вертикали */
+    gap: 25px;              /* Отступ между картинкой и текстом */
+    text-align: left;       /* Текст выравниваем влево */
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee; /* Легкий разделитель снизу */
+}
+/* Убираем черту у последнего элемента */
+.tablet-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Контейнер картинки */
+.tablet-img-dark {
+    width: 80px;            /* Фиксированная ширина колонки под картинку */
+    display: flex;
+    justify-content: center; /* Картинка по центру своей колонки */
+    margin: 0;
+    /* Убираем лишние стили фона, если остались */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Сами картинки */
+.tablet-img-dark img {
+    width: 65px;            /* Базовый размер */
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+}
+
+/* ХИТРОСТЬ: Принудительно увеличиваем 50мг, если она кажется мелкой */
+/* (Ищем картинку, в имени которой есть '50mg') */
+.tablet-img-dark img[src*="50mg"] {
+    transform: scale(1.3); /* Увеличиваем её на 30% */
+}
+
+/* Стили текста */
+.tablet-info {
+    display: flex;
+    flex-direction: column; /* Заголовок над описанием */
+}
+
+.tablet-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.tablet-desc {
+    font-size: 14px;
+    color: #7f8c8d;
+}
